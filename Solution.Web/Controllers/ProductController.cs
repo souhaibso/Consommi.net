@@ -55,18 +55,30 @@ namespace Consomi.Web.Controllers
 
         // GET: Product/Create7
         [NonAction]
-        public void SendVerificationLinkEmail(string email)
+        public void SendVerificationLinkEmail(string email, ICollection<CartLine> p)
         {
+            String nomProd = "";
+            int quantity=0;
+            double price = 0;
 
+            foreach (var c in p)
+            {
+                nomProd = c.myProduct.nom ;
+                quantity += c.myProduct.quantite;
+                price += c.prixTotal;
+                
+            };
 
             var fromEmail = new MailAddress("hsine.gabsi@esprit.tn", "Command Delivery");
             var toEmail = new MailAddress(email);
             var fromEmailPassword = "Brigade2001";
             string subject = "Command Delivery";
             string body = "<br/><br>We are excited to tell you that your command " +
-                             "will arrive in "+DateTime.Now.ToString("dd-MM-yyy")
-                             ;
-
+                             "will arrive in " + DateTime.Now.ToString("dd-MM-yyy") +
+                             "<br/> Product Name : "+nomProd +
+                             "<br/> Product Quantity : " + quantity+
+                              "<br/> Product Price : " + price;
+           
 
 
 
@@ -372,7 +384,7 @@ namespace Consomi.Web.Controllers
             myCart.prixTotal = totalPrice;
             myCart.status = false;
             //myCart.CartLines = cartLines;
-            SendVerificationLinkEmail("souhaib.roblehsouldan@esprit.tn");
+            SendVerificationLinkEmail("souhaib.roblehsouldan@esprit.tn", cartLines);
             serviceCart.Commit();
 
 

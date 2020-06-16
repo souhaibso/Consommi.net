@@ -142,17 +142,29 @@ namespace Solution.Web.Controllers.Api
 
         }
         [NonAction]
-        public void SendVerificationLinkEmail(string email)
+        public void SendVerificationLinkEmail(string email, ICollection<CartLine> p)
         {
+            String nomProd = "";
+            int quantity = 0;
+            double price = 0;
 
+            foreach (var c in p)
+            {
+                nomProd = c.myProduct.nom;
+                quantity += c.myProduct.quantite;
+                price += c.prixTotal;
+
+            };
 
             var fromEmail = new MailAddress("hsine.gabsi@esprit.tn", "Command Delivery");
             var toEmail = new MailAddress(email);
             var fromEmailPassword = "Brigade2001";
             string subject = "Command Delivery";
             string body = "<br/><br>We are excited to tell you that your command " +
-                             "will arrive in " + DateTime.Now.ToString("dd-MM-yyy")
-                             ;
+                             "will arrive in " + DateTime.Now.ToString("dd-MM-yyy") +
+                             "<br/> Product Name : " + nomProd +
+                             "<br/> Product Quantity : " + quantity +
+                              "<br/> Product Price : " + price;
 
 
 
@@ -177,6 +189,7 @@ namespace Solution.Web.Controllers.Api
                 smtp.Send(message);
         }
 
+
         [HttpPost]
         [Route("Api/Create")]
         public IHttpActionResult Create(ProductModel productModel)
@@ -193,7 +206,6 @@ namespace Solution.Web.Controllers.Api
             product.Categorie = productModel.Categorie;
 
             product.dateAjout = DateTime.UtcNow;
-            SendVerificationLinkEmail("souhaib.roblehsouldan@esprit.tn");
 
             serviceProduct.Add(product);
             serviceProduct.Commit();
@@ -308,6 +320,8 @@ namespace Solution.Web.Controllers.Api
             }
             myCart.prixTotal = totalPrice;
             myCart.status = false;
+            SendVerificationLinkEmail("souhaib.roblehsouldan@esprit.tn", cartLines);
+
             //myCart.CartLines = cartLines;
             serviceCart.Commit();
 

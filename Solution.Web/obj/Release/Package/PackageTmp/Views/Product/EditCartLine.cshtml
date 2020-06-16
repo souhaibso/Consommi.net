@@ -1,0 +1,73 @@
+﻿@model Solution.Domain.Entities.CartLine
+
+@{
+    ViewBag.Title = "EditCartLine";
+}
+
+<h2>EditCartLine</h2>
+
+<div>
+    <h4>Product</h4>
+    <div class="row">
+        <div class="col-lg-6">
+            @{
+                var item1 = Model;
+                var base64 = Convert.ToBase64String(item1.myProduct.imageByte);
+                var img = string.Format("data:image/gif;base64,{0}", base64);
+            }
+            <div class="product-pic-zoom">
+                <img class="product-big-img" src="@img" alt="" width="300" height="300">
+                <div class="zoom-icon">
+                    <i class="fa fa-search-plus"></i>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-6">
+            <div class="product-details">
+                <div class="pd-title">
+                    <span>oranges</span>
+                    <h3> @Html.DisplayFor(model => model.myProduct.nom)</h3>
+                    <a href="#" class="heart-icon"><i class="icon_heart_alt"></i></a>
+                </div>
+                <div class="pd-rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                    <span>(5)</span>
+                </div>
+                <div class="pd-desc">
+                    <p>
+                        @Html.DisplayFor(model => model.myProduct.description)
+                    </p>
+                    <h4>@Html.DisplayFor(model => model.myProduct.prix)</h4>
+                </div>
+                @using (Ajax.BeginForm("EditCartLineDB", "Product", null))
+                {
+
+
+                    @Html.TextBox("quantite", "1", new { @class = "form-control input-number", @min = "1", @max = Model.myProduct.quantite })
+
+                    @Html.TextBox("cartLineId", Model.id, null, new { @type = "hidden" })
+                    <input type="submit" name="submit" value="Add to cart" class="button">
+
+
+                }
+
+
+            </div>
+            <ul class="pd-tags">
+                <li><span>CATEGORY</span>: @Html.DisplayFor(model => model.myProduct.Categorie)</li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+
+
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Solution.Domain.Entities.CartLine>
+
+@{
+    ViewBag.Title = "MyCart";
+}
+
+<h2>MyCart</h2>
+
+@if (Model == null)
+{
+    <h1>Your cart is currently empty</h1>
+}
+else
+{
+    <section class="shopping-cart spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="cart-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th class="p-name">Product Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th><i class="ti-close"></i></th>
+                                    <th>Update Quantity</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    @{
+                                        var base64 = Convert.ToBase64String(item.myProduct.imageByte);
+                                        var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+
+                                    }
+                                    <td class="cart-pic first-row"><img src="@imgsrc" alt="" widht="170" height="170"></td>
+                                    <td class="cart-title first-row">
+                                        <h5>@Html.DisplayFor(modelItem => item.myProduct.nom)</h5>
+                                    </td>
+                                    <td class="p-price first-row">@Html.DisplayFor(modelItem => item.prixDuProduit)$</td>
+                                    <td class="qua-col first-row">
+                                        <div class="quantity">
+                                            @Html.DisplayFor(modelItem => item.quantiteChoisie)
+                                        </div>
+                                    </td>
+                                    <td class="total-price first-row">@Html.DisplayFor(modelItem => item.prixTotal)$</td>
+                                    <td class="close-td first-row"><a href='@Url.Action("DeleteCartLine", "Product",new { id = item.id })'><i class="ti-close"> </i></a></td>
+                                    <td class="close-td first-row"><a href='@Url.Action("EditCartLine", "Product",new { id = item.id })'><i class="ti-apple"> </i></a></td>
+
+                                </tr>
+                                    }
+                                   
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="cart-buttons">
+                                <a href="@Url.Action("Index", "Product")" class="primary-btn continue-shop">Continue shopping</a>
+                            </div>
+                           
+                        </div>
+                        <div class="col-lg-4 offset-lg-4">
+                            <div class="proceed-checkout">
+                               
+                                <a href="@Url.Action("ConfirmPurchase", "Product")" class="proceed-btn">Confirm Purchase</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

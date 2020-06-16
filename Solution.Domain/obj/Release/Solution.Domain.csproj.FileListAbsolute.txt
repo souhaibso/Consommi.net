@@ -1,0 +1,13 @@
+C:\Users\Hsine\Desktop\souhaib\Solution-4Arctic-2020\Solution.Domain\bin\Release\Solution.Domain.dll.config
+C:\Users\Hsine\Desktop\souhaib\Solution-4Arctic-2020\Solution.Domain\bin\Release\Solution.Domain.dll
+C:\Users\Hsine\Desktop\souhaib\Solution-4Arctic-2020\Solution.Domain\bin\Release\Solution.Domain.pdb
+C:\Users\Hsine\Desktop\souhaib\Solution-4Arctic-2020\Solution.Domain\bin\Release\EntityFramework.dll
+C:\Users\Hsine\Desktop\souhaib\Solution-4Arctic-2020\Solution.Domain\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Hsine\Desktop\souhaib\Solution-4Arctic-2020\Solution.Domain\bin\Release\Newtonsoft.Json.dll
+C:\Users\Hsine\Desktop\souhaib\Solution-4Arctic-2020\Solution.Domain\bin\Release\EntityFramework.xml
+C:\Users\Hsine\Desktop\souhaib\Solution-4Arctic-2020\Solution.Domain\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Hsine\Desktop\souhaib\Solution-4Arctic-2020\Solution.Domain\bin\Release\Newtonsoft.Json.xml
+C:\Users\Hsine\Desktop\souhaib\Solution-4Arctic-2020\Solution.Domain\obj\Release\Solution.Domain.csprojAssemblyReference.cache
+C:\Users\Hsine\Desktop\souhaib\Solution-4Arctic-2020\Solution.Domain\obj\Release\Solution.Domain.csproj.CopyComplete
+C:\Users\Hsine\Desktop\souhaib\Solution-4Arctic-2020\Solution.Domain\obj\Release\Solution.Domain.dll
+C:\Users\Hsine\Desktop\souhaib\Solution-4Arctic-2020\Solution.Domain\obj\Release\Solution.Domain.pdb

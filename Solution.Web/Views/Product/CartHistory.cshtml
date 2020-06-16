@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Solution.Domain.Entities.Cart>
+
+@{
+    ViewBag.Title = "CartHistory";
+}
+
+<h2>CartHistory</h2>
+@if (Model == null)
+{
+    <h1> You did not buy any product </h1>
+}
+else
+{
+    foreach (var itemCart in Model)
+
+    {
+        <h3> you have confirmed payment for this Cart on <span style="color: #3399CC"> @itemCart.dateAchat.ToString("dd MMM yyyy") </span> which contains the products below and you paid <span style="color: #3399CC"> @itemCart.prixTotal € </span>  </h3>
+
+        <section class="shopping-cart spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="cart-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th class="p-name">Product Name</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Total</th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in itemCart.CartLines)
+                                    {
+                                        <tr>
+                                            @{
+                                                var base64 = Convert.ToBase64String(item.myProduct.imageByte);
+                                                var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+
+                                            }
+                                            <td class="cart-pic first-row"><img src="@imgsrc" alt="" widht="170" height="170"></td>
+                                            <td class="cart-title first-row">
+                                                <h5>@Html.DisplayFor(modelItem => item.myProduct.nom)</h5>
+                                            </td>
+                                            <td class="p-price first-row">@Html.DisplayFor(modelItem => item.prixDuProduit)$</td>
+                                            <td class="qua-col first-row">
+                                                <div class="quantity">
+                                                    @Html.DisplayFor(modelItem => item.quantiteChoisie)
+                                                </div>
+                                            </td>
+                                            <td class="total-price first-row">@Html.DisplayFor(modelItem => item.prixTotal)$</td>
+
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+}

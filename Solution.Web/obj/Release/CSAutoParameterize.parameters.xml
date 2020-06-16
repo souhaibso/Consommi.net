@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="consommi-Web.config Connection String" description="consommi Connection String used in web.config by the application to access the database." defaultValue=" Data Source=consommidbserver.database.windows.net;Initial Catalog=consommi_db;User ID=sqladmin;Password=Brigade2013;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Hsine\\Desktop\\souhaib\\Solution-4Arctic-2020\\Solution\.Web\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='consommi']/@connectionString" />
+  </parameter>
+  <parameter name="machaine-Web.config Connection String" description="machaine Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-Solution.Web-20200210041245.mdf;Initial Catalog=Base-ArcTic2020;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Hsine\\Desktop\\souhaib\\Solution-4Arctic-2020\\Solution\.Web\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='machaine']/@connectionString" />
+  </parameter>
+</parameters>
